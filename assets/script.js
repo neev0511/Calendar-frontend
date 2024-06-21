@@ -12,6 +12,12 @@ const formatter = new Intl.DateTimeFormat("en-GB", {
   timeZone: "IST",
 });
 
+const runAOS = () => {
+  setTimeout(() => {
+    AOS.init({ duration: 800 });
+  }, 3000);
+};
+
 // Call APIs
 const timeline = document.querySelector("#timeline");
 const loader = document.querySelector("#wrapper-loader");
@@ -24,7 +30,11 @@ const getEvents = () => {
       count = 0;
       for (let event of allofRes) {
         alignment = "right";
-        if (count % 2 === 0) alignment = "left";
+        animation = "left";
+        if (count % 2 === 0) {
+          alignment = "left";
+          animation = "right";
+        }
 
         // Cleaning data
         if (event.organizer.displayName === "Formula 1") {
@@ -53,9 +63,9 @@ const getEvents = () => {
         // Making html code that needs to be added
 
         content = `
-              <div class="container ${alignment}-container">
-        <img src="assets/images/${image}" alt="" />
-        <div class="text-box">
+              <div class="container ${alignment}-container" >
+        <img src="assets/images/${image}" alt="" data-aos="zoom-in"/>
+        <div class="text-box" data-aos="fade-${animation}">
           <h2> ${event.summary}</h2>
           <small>${startFormattedDate} - ${endFormattedDate}</small>
           <br>
@@ -81,6 +91,7 @@ const getEvents = () => {
         count += 1;
       }
     });
+  runAOS();
 };
 
 getEvents();

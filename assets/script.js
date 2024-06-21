@@ -1,4 +1,5 @@
 const PATH = "https://calendar-backend-pc6v.onrender.com/getEvents/";
+// const PATH = "http://localhost:8000/getEvents/";
 
 const formatter = new Intl.DateTimeFormat("en-GB", {
   year: "numeric",
@@ -18,10 +19,12 @@ const getEvents = () => {
 
     allofRes = allofRes.data;
     count = 0;
+
     for (let event of allofRes) {
       alignment = "right";
       if (count % 2 === 0) alignment = "left";
 
+      // Cleaning data
       if (event.organizer.displayName === "Formula 1") {
         image = "f1.png";
         event.location = "https://www.fancode.com/";
@@ -33,11 +36,16 @@ const getEvents = () => {
         image = "airtribe.svg";
       else image = "other.jpg";
 
+      // Formatting dates
       const startDate = new Date(event.start.dateTime);
       const startFormattedDate = formatter.format(startDate);
 
       const endDate = new Date(event.end.dateTime);
       const endFormattedDate = formatter.format(endDate);
+
+      // Clearing undefined description and location
+      if (event.description === undefined) event.description = "No description";
+      if (event.location === undefined) event.location = "#";
 
       content = `
         <div class="container ${alignment}-container">
@@ -51,11 +59,13 @@ const getEvents = () => {
           </p>
           <span class="${alignment}-container-arrow"></span>
           <div class="button-wrapper">
-            <button><a target="_blank" href="${event.location}">Open</a></button>
+            <button><a href="${event.location}">Open</a></button>
           </div>
         </div>
       </div>
         `;
+
+      // Inputting content
       timeline.innerHTML += content;
       count += 1;
     }

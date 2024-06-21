@@ -1,8 +1,6 @@
 const PATH = "https://calendar-backend-pc6v.onrender.com/getEvents/";
 // const PATH = "http://localhost:8000/getEvents/";
 
-localStorage.setItem("password", "r57854pK8yCdvF117s9VJqHhP4vXPN");
-
 const formatter = new Intl.DateTimeFormat("en-GB", {
   year: "numeric",
   month: "2-digit",

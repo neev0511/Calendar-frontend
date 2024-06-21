@@ -13,13 +13,13 @@ const formatter = new Intl.DateTimeFormat("en-GB", {
 });
 
 // Call APIs
+const timeline = document.querySelector("#timeline");
+const loader = document.querySelector("#wrapper-loader");
 const getEvents = () => {
   axios.post(PATH).then((allofRes) => {
-    const timeline = document.querySelector("#timeline");
-
+    loader.style.display = "none";
     allofRes = allofRes.data;
     count = 0;
-
     for (let event of allofRes) {
       alignment = "right";
       if (count % 2 === 0) alignment = "left";

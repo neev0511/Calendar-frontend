@@ -1,5 +1,5 @@
-// const PATH = "https://calendar-backend-pc6v.onrender.com/getEvents/";
-const PATH = "http://localhost:8000/getEvents/";
+const PATH = "https://calendar-backend-pc6v.onrender.com/getEvents/";
+// const PATH = "http://localhost:8000/getEvents/";
 
 const formatter = new Intl.DateTimeFormat("en-GB", {
   year: "numeric",

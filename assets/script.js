@@ -79,7 +79,7 @@ const getEvents = () => {
         if (event.location !== undefined) {
           content += `          
         <div class="button-wrapper">
-            <button><a href="${event.location}">Open</a></button>
+            <a href="${event.location}"><button>Open</button></a>
         </div>
           `;
         }

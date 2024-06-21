@@ -1,5 +1,5 @@
-const PATH = "https://calendar-backend-pc6v.onrender.com/getEvents/";
-// const PATH = "http://localhost:8000/getEvents/";
+// const PATH = "https://calendar-backend-pc6v.onrender.com/getEvents/";
+const PATH = "http://localhost:8000/getEvents/";
 
 const formatter = new Intl.DateTimeFormat("en-GB", {
   year: "numeric",
@@ -34,6 +34,7 @@ const getEvents = () => {
         event.location = "https://www.google.com/maps?q=" + event.location;
       } else if (event.organizer.displayName === "Airtribe Calendar")
         image = "airtribe.svg";
+      else if (event.organizer.displayName === "Task") image = "tasks.svg";
       else image = "other.jpg";
 
       // Formatting dates
@@ -43,12 +44,13 @@ const getEvents = () => {
       const endDate = new Date(event.end.dateTime);
       const endFormattedDate = formatter.format(endDate);
 
-      // Clearing undefined description and location
+      // Clearing undefined description
       if (event.description === undefined) event.description = "No description";
-      if (event.location === undefined) event.location = "#";
+
+      // Making html code that needs to be added
 
       content = `
-        <div class="container ${alignment}-container">
+              <div class="container ${alignment}-container">
         <img src="assets/images/${image}" alt="" />
         <div class="text-box">
           <h2> ${event.summary}</h2>
@@ -58,12 +60,18 @@ const getEvents = () => {
             ${event.description}
           </p>
           <span class="${alignment}-container-arrow"></span>
-          <div class="button-wrapper">
+      `;
+
+      // Checking for location button
+      if (event.location !== undefined) {
+        content += `          
+        <div class="button-wrapper">
             <button><a href="${event.location}">Open</a></button>
-          </div>
         </div>
-      </div>
-        `;
+          `;
+      }
+
+      content += `</div></div>`;
 
       // Inputting content
       timeline.innerHTML += content;

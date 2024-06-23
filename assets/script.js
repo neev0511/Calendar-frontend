@@ -2,14 +2,9 @@ const PATH = "https://calendar-backend-pc6v.onrender.com/getEvents/";
 // const PATH = "http://localhost:8000/getEvents/";
 
 const formatter = new Intl.DateTimeFormat("en-GB", {
-  year: "numeric",
-  month: "2-digit",
-  day: "2-digit",
   hour: "2-digit",
   minute: "2-digit",
-  second: "2-digit",
   hour12: false,
-  timeZone: "IST",
 });
 
 const runAOS = () => {
@@ -51,7 +46,10 @@ const getEvents = () => {
 
         // Formatting dates
         const startDate = new Date(event.start.dateTime);
-        const startFormattedDate = formatter.format(startDate);
+        const startFormattedDate =
+          startDate.toLocaleString("en-US", { weekday: "long" }) +
+          ", " +
+          formatter.format(startDate);
 
         const endDate = new Date(event.end.dateTime);
         const endFormattedDate = formatter.format(endDate);

@@ -47,12 +47,13 @@ const getEvents = () => {
         // Formatting dates
         const startDate = new Date(event.start.dateTime);
         const startFormattedDate =
+          "<b>" +
           startDate.toLocaleString("en-US", { weekday: "long" }) +
           ", " +
           formatter.format(startDate);
 
         const endDate = new Date(event.end.dateTime);
-        const endFormattedDate = formatter.format(endDate);
+        const endFormattedDate = formatter.format(endDate) + "</b>";
 
         // Clearing undefined description
         if (event.description === undefined)

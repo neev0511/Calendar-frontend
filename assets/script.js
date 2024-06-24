@@ -13,6 +13,8 @@ const runAOS = () => {
   }, 3000);
 };
 
+const createWrapper = document.getElementById("createWrapper");
+createWrapper.style.display = "none";
 // Call APIs
 const timeline = document.querySelector("#timeline");
 const loader = document.querySelector("#wrapper-loader");
@@ -63,8 +65,8 @@ const getEvents = () => {
 
         content = `
               <div class="container ${alignment}-container" >
-        <img src="assets/images/${image}" alt="" data-aos="zoom-in"/>
-        <div class="text-box" data-aos="fade-${animation}">
+        <img src="assets/images/${image}" alt="" />
+        <div class="text-box">
           <h2> ${event.summary}</h2>
           <small>${startFormattedDate} - ${endFormattedDate}</small>
           <br>
@@ -76,9 +78,17 @@ const getEvents = () => {
 
         // Checking for location button
         if (event.location !== undefined) {
-          content += `          
+          content += ` 
         <div class="button-wrapper">
             <a href="${event.location}"><button>Open</button></a>
+            <div class="editAndDeleteButton">
+              <button type="button" id="${event.id}" onclick="editButton(this.id)">
+                <i class="fa-solid fa-pencil"></i>
+              </button>
+              <button type="button" id="${event.id}" onclick="deleteButton(this.id)">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </div>
         </div>
           `;
         }
@@ -89,8 +99,19 @@ const getEvents = () => {
         timeline.innerHTML += content;
         count += 1;
       }
+      createWrapper.style.display = "block";
     });
-  runAOS();
+
+  // runAOS();
 };
 
 getEvents();
+
+// Edit
+function editButton(id) {}
+
+// Delete
+function deleteButton(id) {}
+
+// Create
+function create() {}

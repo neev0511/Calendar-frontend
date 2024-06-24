@@ -16,6 +16,7 @@ body {
     position: relative;
     max-width: 1200px;
     margin: 100px auto;
+    margin-top: 40px;
 }
 
 .container {
@@ -102,6 +103,39 @@ button {
     color: #E4E4E4;
     cursor: pointer;
     background: #da2413;
+}
+
+.create-wrapper button i {
+    font-size: 15px;
+}
+.create-wrapper button {
+    padding: 8px;
+    font-size: 15px;
+    gap: 10px;
+    display: flex;
+}
+button span {
+    margin-top: -3px;
+}
+
+.create-wrapper {
+    margin-left: 90px;
+    padding-top: 50px;
+}
+
+.button-wrapper{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+.editAndDeleteButton {
+    text-align: right;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-left: auto;
+    margin-right: 10px;
 }
 
 .left-container-arrow {

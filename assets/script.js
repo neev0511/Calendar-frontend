@@ -1,5 +1,5 @@
-const PATH = "https://calendar-backend-pc6v.onrender.com/getEvents/";
-// const PATH = "http://localhost:8000/getEvents/";
+// const PATH = "https://calendar-backend-pc6v.onrender.com/";
+const PATH = "http://localhost:8000/";
 
 const formatter = new Intl.DateTimeFormat("en-GB", {
   hour: "2-digit",
@@ -20,7 +20,7 @@ const timeline = document.querySelector("#timeline");
 const loader = document.querySelector("#wrapper-loader");
 const getEvents = () => {
   axios
-    .post(PATH, { password: localStorage.getItem("password") })
+    .post(PATH + "getEvents/", { password: localStorage.getItem("password") })
     .then((allofRes) => {
       loader.style.display = "none";
       allofRes = allofRes.data;
@@ -82,15 +82,24 @@ const getEvents = () => {
         <div class="button-wrapper">
             <a href="${event.location}"><button>Open</button></a>
             <div class="editAndDeleteButton">
+                  <button type="button" id="${event.id}" onclick="editButton(this.id)">
+                    <i class="fa-solid fa-pencil"></i>
+                  </button>
+                  <button type="button" id="${event.id}" onclick="deleteButton(this.id)">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </div>
+        </div>
+          `;
+        } else {
+          content += `<div class="editAndDeleteButton">
               <button type="button" id="${event.id}" onclick="editButton(this.id)">
                 <i class="fa-solid fa-pencil"></i>
               </button>
               <button type="button" id="${event.id}" onclick="deleteButton(this.id)">
                 <i class="fa-solid fa-trash"></i>
               </button>
-            </div>
-        </div>
-          `;
+            </div>`;
         }
 
         content += `</div></div>`;
@@ -108,10 +117,36 @@ const getEvents = () => {
 getEvents();
 
 // Edit
-function editButton(id) {}
+function editButton(id) {
+  
+}
 
 // Delete
-function deleteButton(id) {}
+function deleteButton(id) {
+  loader.style.display = "block";
+  createWrapper.style.display = "none";
+  timeline.style.display = "none";
+  axios
+    .post(PATH + "getEvents/", { password: localStorage.getItem("password") })
+    .then((allofRes) => {
+      allofRes = allofRes.data;
+      let type = "Event";
+      for (let event of allofRes) {
+        if (event.id === id && event.organizer.displayName === "Task") {
+          type = "Task";
+        }
+      }
+      axios
+        .post(PATH + `delete${type}`, { id: id })
+        .then(window.location.reload());
+    })
+    .catch((err) => {
+      window.alert("Server Error");
+      loader.style.display = "none";
+      createWrapper.style.display = "block";
+      timeline.style.display = "block";
+    });
+}
 
 // Create
 function create() {}

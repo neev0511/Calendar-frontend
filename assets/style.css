@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap");
 
-*{
+* {
     margin: 0;
     padding: 0;
     font-family: "Montserrat";
@@ -20,9 +20,9 @@ body {
 }
 
 .container {
-   padding: 10px 50px; 
-   position: relative;
-   width: 50%;
+    padding: 10px 50px;
+    position: relative;
+    width: 50%;
 }
 
 a {
@@ -73,9 +73,10 @@ a {
 }
 
 @keyframes moveline {
-    0%{
+    0% {
         height: 0;
     }
+
     100% {
         height: 100%;
     }
@@ -90,6 +91,7 @@ a {
     margin-bottom: 15px;
     color: #E4E4E4;
 }
+
 .text-box p {
     display: inline-block;
     margin-bottom: 15px;
@@ -108,12 +110,14 @@ button {
 .create-wrapper button i {
     font-size: 15px;
 }
+
 .create-wrapper button {
     padding: 8px;
     font-size: 15px;
     gap: 10px;
     display: flex;
 }
+
 button span {
     margin-top: -3px;
 }
@@ -123,12 +127,13 @@ button span {
     padding-top: 50px;
 }
 
-.button-wrapper{
+.button-wrapper {
     display: flex;
     flex-direction: row;
     gap: 30px;
     flex-wrap: wrap;
 }
+
 .editAndDeleteButton {
     text-align: right;
     display: flex;
@@ -167,50 +172,119 @@ button span {
     margin-left: 45%;
     margin-top: 40vh;
 }
+
 .loader {
     width: 100px;
     aspect-ratio: 1;
     --c: linear-gradient(#da2413 0 0);
-    --r1: radial-gradient(farthest-side at bottom,#da2413 93%,#da2413);
-    --r2: radial-gradient(farthest-side at top   ,#da2413 93%,#da2413);
-    background: 
-      var(--c) ,var(--r1),var(--r2),
-      var(--c) ,var(--r1),var(--r2),
-      var(--c) ,var(--r1),var(--r2);
+    --r1: radial-gradient(farthest-side at bottom, #da2413 93%, #da2413);
+    --r2: radial-gradient(farthest-side at top, #da2413 93%, #da2413);
+    background:
+        var(--c), var(--r1), var(--r2),
+        var(--c), var(--r1), var(--r2),
+        var(--c), var(--r1), var(--r2);
     background-repeat: no-repeat;
     animation: l2 1s infinite alternate;
-  }
-  @keyframes l2 {
-    0%,25% {
-      background-size: 8px 0,8px 4px,8px 4px,8px 0,8px 4px,8px 4px,8px 0,8px 4px,8px 4px;
-      background-position: 0 50%,0 calc(50% - 2px),0 calc(50% + 2px),50% 50%,50% calc(50% - 2px),50% calc(50% + 2px),100% 50%,100% calc(50% - 2px),100% calc(50% + 2px);
-   }
-   50% {
-      background-size: 8px 100%,8px 4px,8px 4px,8px 0,8px 4px,8px 4px,8px 0,8px 4px,8px 4px;
-      background-position: 0 50%,0 calc(0% - 2px),0 calc(100% + 2px),50% 50%,50% calc(50% - 2px),50% calc(50% + 2px),100% 50%,100% calc(50% - 2px),100% calc(50% + 2px);
-   }
-   75% {
-      background-size: 8px 100%,8px 4px,8px 4px,8px 100%,8px 4px,8px 4px,8px 0,8px 4px,8px 4px;
-      background-position: 0 50%,0 calc(0% - 2px),0 calc(100% + 2px),50% 50%,50% calc(0% - 2px),50% calc(100% + 2px),100% 50%,100% calc(50% - 2px),100% calc(50% + 2px);
-   }
-   95%,100% {
-      background-size: 8px 100%,8px 4px, 8px 4px,8px 100%,8px 4px,8px 4px,8px 100%,8px 4px,8px 4px;
-      background-position: 0 50%,0 calc(0% - 2px),0 calc(100% + 2px),50% 50%,50% calc(0% - 2px),50% calc(100% + 2px),100% 50%,100% calc(0% - 2px),100% calc(100% + 2px);
-   }
-  }
+}
+
+@keyframes l2 {
+
+    0%,
+    25% {
+        background-size: 8px 0, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px;
+        background-position: 0 50%, 0 calc(50% - 2px), 0 calc(50% + 2px), 50% 50%, 50% calc(50% - 2px), 50% calc(50% + 2px), 100% 50%, 100% calc(50% - 2px), 100% calc(50% + 2px);
+    }
+
+    50% {
+        background-size: 8px 100%, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px;
+        background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px), 50% 50%, 50% calc(50% - 2px), 50% calc(50% + 2px), 100% 50%, 100% calc(50% - 2px), 100% calc(50% + 2px);
+    }
+
+    75% {
+        background-size: 8px 100%, 8px 4px, 8px 4px, 8px 100%, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px;
+        background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px), 50% 50%, 50% calc(0% - 2px), 50% calc(100% + 2px), 100% 50%, 100% calc(50% - 2px), 100% calc(50% + 2px);
+    }
+
+    95%,
+    100% {
+        background-size: 8px 100%, 8px 4px, 8px 4px, 8px 100%, 8px 4px, 8px 4px, 8px 100%, 8px 4px, 8px 4px;
+        background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px), 50% 50%, 50% calc(0% - 2px), 50% calc(100% + 2px), 100% 50%, 100% calc(0% - 2px), 100% calc(100% + 2px);
+    }
+}
+
+.popup {
+    margin: auto;
+    margin-top: 10vh;
+    width: 450px;
+    background-color: #26272a;
+    border-radius: 10px;
+}
+
+.close-btn {
+    margin-left: 90%;
+}
+
+.close-btn i {
+    cursor: pointer;
+    font-size: 20px;
+    color: #E4E4E4;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-left: 30px;
+    margin-bottom: 10px;
+    color: #ccc;
+}
+
+.input-field {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+input[type='text'],
+select,
+input[type="datetime-local"] {
+    margin-left: auto;
+    margin-right: 50px;
+    margin-bottom: 20px;
+    margin-top: -5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 250px;
+    height: 30px;
+    color: #757575;
+    padding-left: 10px;
+}
+
+.button-wrapper-form {
+    margin-bottom: 20px;
+    margin-left: 30px;
+}
+
+.button-wrapper-form button {
+    margin-bottom: 30px;
+}
 
 @media screen and (max-width: 800px) {
     .timeline {
         margin: 50px auto;
     }
+
     .timeline::after {
         left: 31px;
     }
-    .container{
+
+    .container {
         width: 100%;
         padding-left: 80px;
         padding-right: 25px;
     }
+
     .text-box {
         font-size: 13px;
     }
@@ -218,17 +292,45 @@ button span {
     .text-box small {
         margin-bottom: 10px;
     }
+
     .right-container {
         left: 0;
     }
 
-    .left-container img, .right-container img {
+    .left-container img,
+    .right-container img {
         left: 10px;
     }
 
-    .left-container-arrow, .right-container-arrow {
+    .left-container-arrow,
+    .right-container-arrow {
         border-right: 15px solid #1E1F22;
         border-left: 0;
         left: -15px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .popup {
+        width: 400px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .popup {
+        width: 350px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .popup {
+        width: 250px;
+    }
+
+    input[type='text'],
+    select,
+    input[type="datetime-local"] {
+        margin-left: 30px;
+        margin-right: 30px;
     }
 }

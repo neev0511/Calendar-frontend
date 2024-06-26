@@ -1,5 +1,5 @@
-// const PATH = "https://calendar-backend-pc6v.onrender.com/";
-const PATH = "http://localhost:8000/";
+const PATH = "https://calendar-backend-pc6v.onrender.com/";
+// const PATH = "http://localhost:8000/"; 
 
 const formatter = new Intl.DateTimeFormat("en-GB", {
   hour: "2-digit",
@@ -13,8 +13,8 @@ const runAOS = () => {
   }, 3000);
 };
 
-const createWrapper = document.getElementById("createWrapper");
-createWrapper.style.display = "none";
+const popupWrapper = document.getElementById("popupWrapper");
+popupWrapper.style.display = "none";
 // Call APIs
 const timeline = document.querySelector("#timeline");
 const loader = document.querySelector("#wrapper-loader");
@@ -82,9 +82,6 @@ const getEvents = () => {
         <div class="button-wrapper">
             <a href="${event.location}"><button>Open</button></a>
             <div class="editAndDeleteButton">
-                  <button type="button" id="${event.id}" onclick="editButton(this.id)">
-                    <i class="fa-solid fa-pencil"></i>
-                  </button>
                   <button type="button" id="${event.id}" onclick="deleteButton(this.id)">
                     <i class="fa-solid fa-trash"></i>
                   </button>
@@ -108,7 +105,6 @@ const getEvents = () => {
         timeline.innerHTML += content;
         count += 1;
       }
-      createWrapper.style.display = "block";
     });
 
   // runAOS();
@@ -116,15 +112,9 @@ const getEvents = () => {
 
 getEvents();
 
-// Edit
-function editButton(id) {
-  
-}
-
 // Delete
 function deleteButton(id) {
   loader.style.display = "block";
-  createWrapper.style.display = "none";
   timeline.style.display = "none";
   axios
     .post(PATH + "getEvents/", { password: localStorage.getItem("password") })
@@ -143,10 +133,6 @@ function deleteButton(id) {
     .catch((err) => {
       window.alert("Server Error");
       loader.style.display = "none";
-      createWrapper.style.display = "block";
       timeline.style.display = "block";
     });
 }
-
-// Create
-function create() {}
